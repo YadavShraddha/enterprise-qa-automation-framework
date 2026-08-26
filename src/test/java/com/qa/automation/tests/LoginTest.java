@@ -1,17 +1,14 @@
 package com.qa.automation.tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import com.qa.automation.tests.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest {
+public class LoginTest extends BaseTest {
     @Test
     public void verifyOrangeHRMTitle(){
-        WebDriver driver = new ChromeDriver();
         driver.get("https://opensource-demo.orangehrmlive.com/");
         String actualTitle = driver.getTitle();
         Assert.assertEquals(actualTitle,"OrangeHRM");
-        driver.quit();
     }
 }
