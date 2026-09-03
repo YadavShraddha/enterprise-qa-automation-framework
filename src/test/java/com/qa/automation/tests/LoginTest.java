@@ -1,7 +1,7 @@
 package com.qa.automation.tests;
 import com.qa.automation.config.ConfigReader;
 
-import com.qa.automation.config.ConfigReader;
+import com.qa.automation.pages.DashboardPage;
 import com.qa.automation.pages.LoginPage;
 import com.qa.automation.tests.base.BaseTest;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,11 +27,11 @@ public class LoginTest extends BaseTest {
 
         loginPage.login(ConfigReader.getProperty("username"),
                 ConfigReader.getProperty("password"));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.urlContains("dashboard"));
 
-        Assert.assertTrue(driver.getCurrentUrl().contains("dashboard"),
-                "login was not successful");
+        DashboardPage dashboardPage = new DashboardPage(driver);
+
+        Assert.assertTrue(dashboardPage.isDashboardDisplayed(),
+                "dashboard was not displayed after successful login");
     }
 
 }
