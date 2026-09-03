@@ -42,4 +42,11 @@ public class LoginPage {
         enterPassword(passWord);
         clickLogin();
     }
+
+    private By invalidCredentialMessage = By.xpath("//p[text() = 'Invalid credentials']");
+
+    public String getInvalidCredentialMessage(){
+        return wait.until(
+                ExpectedConditions.visibilityOfElementLocated(invalidCredentialMessage)).getText();
+    }
 }
