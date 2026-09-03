@@ -17,9 +17,6 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void verifyValidLogin(){
-        driver.get(ConfigReader.getProperty("baseURL"));
-
-        LoginPage loginPage = new LoginPage(driver);
 
         loginPage.login(ConfigReader.getProperty("username"),
                 ConfigReader.getProperty("password"));
@@ -32,10 +29,6 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void verifyInvalidLogin(){
-
-        driver.get(ConfigReader.getProperty("baseURL"));
-
-        LoginPage loginPage = new LoginPage(driver);
 
         loginPage.login("InvalidUser","InvalidPassword");
 
